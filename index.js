@@ -2,8 +2,11 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
+const cors=require("cors")
 
 
+
+app.use(cors({origin:process.env.CORS_ORIGIN,credentials:true}));
 // Middleware to parse JSON bodies
 app.use(express.json());
 
