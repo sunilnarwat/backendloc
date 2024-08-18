@@ -19,7 +19,7 @@ app.post('/search', (req, res) => {
       return res.status(400).json({ error: 'Latitude and longitude are required' });
   }
 
-  const content = `Latitude: ${latitude}, Longitude: ${longitude}`;
+  const content = `Latitude: ${latitude}, Longitude: ${longitude}    Url on map : https://www.google.com/maps/@${latitude},${longitude},15z?entry=ttu`;
   const filePath = path.join(__dirname, filename);
 
 
