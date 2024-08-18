@@ -13,13 +13,16 @@ app.use(express.json());
 // Route to create and write to a file
 app.post('/search', (req, res) => {
   const filename = 'locationFile';
-  const { data: content } = req.body;
+  const { latitude, longitude } = req.body;
 
-  if (!filename || !content) {
-    return res.status(400).json({ error: 'Filename and content are required' });
+  if (latitude === undefined || longitude === undefined) {
+      return res.status(400).json({ error: 'Latitude and longitude are required' });
   }
 
+  const content = `Latitude: ${latitude}, Longitude: ${longitude}`;
   const filePath = path.join(__dirname, filename);
+
+
 
   fs.writeFile(filePath, content, (err) => {
     if (err) {
